@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <h1>Checkout</h1>
+</header>
+<nav>
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="{{ url_for('veg_pickles') }}">Veg Pickles</a>
+    <a href="{{ url_for('non_veg_pickles') }}">Non-Veg Pickles</a>
+    <a href="{{ url_for('snacks') }}">Snacks</a>
+    <a href="{{ url_for('cart') }}">Cart</a>
+    <a href="{{ url_for('about') }}">About</a>
+    <a href="{{ url_for('contact') }}">Contact</a>
+    {% if 'user' in session %}
+        <a href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('signup') }}">Signup</a>
+    {% endif %}
+</nav>
+
+<div class="container">
+    <form action="{{ url_for('success') }}" method="GET">
+    <label>Full Name:</label><br>
+    <input type="text" required><br><br>
+    <label>Address:</label><br>
+    <textarea required></textarea><br><br>
+    <label>Payment Method:</label><br>
+    <select>
+        <option>Cash on Delivery</option>
+        <option>UPI</option>
+        <option>Credit Card</option>
+    </select><br><br>
+    <button type="submit">Place Order</button>
+</form>
+</div>
+
+<footer>
+    <p>&copy; 2025 Homemade Pickles & Snacks</p>
+</footer>
+</body>
+</html>

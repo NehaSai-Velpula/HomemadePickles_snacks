@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome - Homemade Pickles & Snacks</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <h1>Homemade Pickles & Snacks</h1>
+    <h2>Taste the Best</h2>
+</header>
+<nav>
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="{{ url_for('veg_pickles') }}">Veg Pickles</a>
+    <a href="{{ url_for('non_veg_pickles') }}">Non-Veg Pickles</a>
+    <a href="{{ url_for('snacks') }}">Snacks</a>
+    <a href="{{ url_for('cart') }}">Cart</a>
+    <a href="{{ url_for('about') }}">About</a>
+    <a href="{{ url_for('contact') }}">Contact</a>
+    {% if 'user' in session %}
+        <a href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('signup') }}">Signup</a>
+    {% endif %}
+</nav>
+
+<div class="container">
+    <h2>Welcome to Homemade Pickles & Snacks Online Store!</h2>
+    <p>We sell delicious homemade pickles and snacks made with love and tradition.</p>
+
+    <img src="{{ url_for('static', filename='images/allinone.webp') }}" alt="Homemade Pickles" width="100%" style="border-radius: 10px; margin-top: 20px;">
+</div>
+
+<footer>
+    <p>&copy; 2025 Homemade Pickles & Snacks</p>
+</footer>
+</body>
+</html>

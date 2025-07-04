@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Non-Veg Pickles</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <h1>Non-Veg Pickles</h1>
+</header>
+<nav>
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="{{ url_for('veg_pickles') }}">Veg Pickles</a>
+    <a href="{{ url_for('non_veg_pickles') }}">Non-Veg Pickles</a>
+    <a href="{{ url_for('snacks') }}">Snacks</a>
+    <a href="{{ url_for('cart') }}">Cart</a>
+    <a href="{{ url_for('about') }}">About</a>
+    <a href="{{ url_for('contact') }}">Contact</a>
+    {% if 'user' in session %}
+        <a href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('signup') }}">Signup</a>
+    {% endif %}
+</nav>
+
+<div class="container">
+    {% for product in products %}
+    <div class="product-card">
+    <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}" width="100%" style="border-radius:10px;">
+    <h3>{{ product.name }}</h3>
+    <p>Price: ₹{{ product.price }}</p>
+    <a href="{{ url_for('add_to_cart', product_id=product.id) }}">
+        <button>Add to Cart</button>
+    </a>
+</div>
+    {% endfor %}
+</div>
+
+<footer>
+    <p>&copy; 2025 Homemade Pickles & Snacks</p>
+</footer>
+</body>
+</html>

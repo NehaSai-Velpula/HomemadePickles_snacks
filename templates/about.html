@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Us - Saiamma's Homemade Pickles & Snacks</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <h1>About Us</h1>
+</header>
+<nav>
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="{{ url_for('veg_pickles') }}">Veg Pickles</a>
+    <a href="{{ url_for('non_veg_pickles') }}">Non-Veg Pickles</a>
+    <a href="{{ url_for('snacks') }}">Snacks</a>
+    <a href="{{ url_for('cart') }}">Cart</a>
+    <a href="{{ url_for('about') }}">About</a>
+    <a href="{{ url_for('contact') }}">Contact</a>
+    {% if 'user' in session %}
+        <a href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('signup') }}">Signup</a>
+    {% endif %}
+</nav>
+
+<div class="container">
+    <p>At Homemade Pickles & Snacks, we bring the authentic taste of tradition straight from our kitchen to yours. Made with love, care, and generations-old recipes, our pickles and snacks are 100% homemade, preservative-free, and packed with real flavor.</p>
+</div>
+
+<footer>
+    <p>&copy; 2025 Homemade Pickles & Snacks</p>
+</footer>
+</body>
+</html>
